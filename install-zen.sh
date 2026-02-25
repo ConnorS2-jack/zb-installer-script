@@ -15,7 +15,7 @@ done
 # Ask only if --yes not provided
 if [ "$AUTO_YES" = false ]; then
     while true; do
-        read -rp "Are you sure? (Y/N): " sureconfirm
+        read -rp "Are you sure? (Y/N): " sureconfirm < /dev/tty
         case "$sureconfirm" in
             [Yy]) break ;;
             [Nn]) echo "Cancelled."; exit 1 ;;
