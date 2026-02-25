@@ -1,7 +1,24 @@
 #! /bin/bash
 
-read -p "you sure? quit if not" sureconfirm
-echo "Ok"
+#!/bin/bash
+
+while true; do
+    read -p "Are you sure? (Y/N): " sureconfirm
+    case "$sureconfirm" in
+        [Yy])
+            echo "Ok"
+            break
+            ;;
+        [Nn])
+            echo "Cancelled."
+            exit 1
+            ;;
+        *)
+            echo "Please press Y or N."
+            ;;
+    esac
+done
+
 set -e
 
 TMP=$(mktemp -d)
