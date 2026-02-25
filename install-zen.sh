@@ -1,19 +1,19 @@
 #!/bin/bash
 set -euo pipefail
 
-AUTO_YES=false
+YEAH=false
 
 # Check arguments
 for arg in "$@"; do
     case "$arg" in
         --yes|-y)
-            AUTO_YES=true
+            YEAH=true
             ;;
     esac
 done
 
-# Ask only if --yes not provided
-if [ "$AUTO_YES" = false ]; then
+# Ask only if --yes not here
+if [ "$YEAH" = false ]; then
     while true; do
         read -rp "Are you sure? (Y/N): " sureconfirm < /dev/tty
         case "$sureconfirm" in
@@ -56,4 +56,4 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
 StartupWMClass=zen
 EOF
 
-echo "Zen Browser installed successfully."
+echo "Zen Browser installed successfully. (installer by MalikHw47)"
