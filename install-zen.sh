@@ -1,19 +1,31 @@
-#!/bin/sh
-set -eu
+#!/bin/bash
+set -euo pipefail
 
-while :; do
-    printf "Are you sure? (Y/N): "
-    read sureconfirm || exit 1
-    case "$sureconfirm" in
-        Y|y) break ;;
-        N|n) echo "Cancelled."; exit 1 ;;
-        *) echo "Please type Y or N." ;;
+AUTO_YES=false
+
+# Check arguments
+for arg in "$@"; do
+    case "$arg" in
+        --yes|-y)
+            AUTO_YES=true
+            ;;
     esac
 done
-# lol
 
-TMP=$(mktemp -d) || exit 1
-trap 'rm -rf "$TMP"' EXIT INT TERM
+# Ask only if --yes not provided
+if [ "$AUTO_YES" = false ]; then
+    while true; do
+        read -rp "Are you sure? (Y/N): " sureconfirm
+        case "$sureconfirm" in
+            [Yy]) break ;;
+            [Nn]) echo "Cancelled."; exit 1 ;;
+            *) echo "Please press Y or N." ;;
+        esac
+    done
+fi
+
+TMP=$(mktemp -d)
+trap 'rm -rf "$TMP"' EXIT
 
 echo "Downloading Zen Browser..."
 curl -fL \
@@ -30,8 +42,8 @@ sudo mv "$TMP/zen" /opt/
 echo "Linking binary..."
 sudo ln -sf /opt/zen/zen /usr/local/bin/zen
 
-echo "Creating system desktop entry..."
-sudo sh -c "cat > /usr/share/applications/zen-browser.desktop" <<EOF
+echo "Creating desktop entry..."
+sudo tee /usr/share/applications/zen-browser.desktop > /dev/null <<EOF
 [Desktop Entry]
 Name=Zen Browser
 Comment=Beautifully designed, privacy-focused, and packed with features.
@@ -43,21 +55,5 @@ Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
 StartupWMClass=zen
 EOF
-
-echo "Creating user desktop shortcut..."
-mkdir -p "$HOME/Desktop"
-cat > "$HOME/Desktop/zen-browser.desktop" <<EOF
-[Desktop Entry]
-Name=Zen Browser
-Comment=Beautifully designed, privacy-focused, and packed with features.
-Exec=/opt/zen/zen
-Icon=/opt/zen/browser/chrome/icons/default/default128.png
-Terminal=false
-Type=Application
-Categories=Network;WebBrowser;
-StartupWMClass=zen
-EOF
-
-chmod +x "$HOME/Desktop/zen-browser.desktop"
 
 echo "Zen Browser installed successfully."
