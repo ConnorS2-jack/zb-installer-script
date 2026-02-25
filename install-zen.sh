@@ -10,6 +10,7 @@ while :; do
         *) echo "Please type Y or N." ;;
     esac
 done
+# lol
 
 TMP=$(mktemp -d) || exit 1
 trap 'rm -rf "$TMP"' EXIT INT TERM
