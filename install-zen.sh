@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#! /bin/bash
+
+read -p "you sure? quit if not" sureconfirm
+echo "Ok"
 set -e
 
 TMP=$(mktemp -d)
