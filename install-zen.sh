@@ -1,20 +1,21 @@
-#!/bin/bash
-set -euo pipefail
+#!/bin/sh
+set -eu
 
-while true; do
-    read -rp "Are you sure? (Y/N): " sureconfirm
+while :; do
+    printf "Are you sure? (Y/N): "
+    read sureconfirm || exit 1
     case "$sureconfirm" in
-        [Yy]) break ;;
-        [Nn]) echo "Cancelled."; exit 1 ;;
-        *) echo "Please press Y or N." ;;
+        Y|y) break ;;
+        N|n) echo "Cancelled."; exit 1 ;;
+        *) echo "Please type Y or N." ;;
     esac
 done
 
-TMP=$(mktemp -d)
-trap 'rm -rf "$TMP"' EXIT
+TMP=$(mktemp -d) || exit 1
+trap 'rm -rf "$TMP"' EXIT INT TERM
 
 echo "Downloading Zen Browser..."
-curl -L \
+curl -fL \
   "https://github.com/zen-browser/desktop/releases/latest/download/zen.linux-x86_64.tar.xz" \
   -o "$TMP/zen.tar.xz"
 
@@ -29,7 +30,7 @@ echo "Linking binary..."
 sudo ln -sf /opt/zen/zen /usr/local/bin/zen
 
 echo "Creating system desktop entry..."
-sudo tee /usr/share/applications/zen-browser.desktop > /dev/null <<EOF
+sudo sh -c "cat > /usr/share/applications/zen-browser.desktop" <<EOF
 [Desktop Entry]
 Name=Zen Browser
 Comment=Beautifully designed, privacy-focused, and packed with features.
@@ -43,7 +44,8 @@ StartupWMClass=zen
 EOF
 
 echo "Creating user desktop shortcut..."
-tee "$HOME/Desktop/zen-browser.desktop" > /dev/null <<EOF
+mkdir -p "$HOME/Desktop"
+cat > "$HOME/Desktop/zen-browser.desktop" <<EOF
 [Desktop Entry]
 Name=Zen Browser
 Comment=Beautifully designed, privacy-focused, and packed with features.
